@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:sof_app/data/exception/fetch_data_exception.dart';
 
 import 'sof_answer_data.dart';
 

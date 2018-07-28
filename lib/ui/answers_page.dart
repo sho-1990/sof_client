@@ -3,11 +3,12 @@ import 'package:sof_app/data/sof/sof_answer_data.dart';
 import 'package:sof_app/modules/sof_answers_presenter.dart';
 import 'package:sof_app/my_theme.dart';
 import 'package:sof_app/ui/platform_button.dart';
+import 'package:sof_app/ui/sof_web_page.dart';
 import 'package:sof_app/ui/ui_util.dart' as uiUtil;
 
 class AnswersPage extends StatelessWidget {
 
-  SofAnswersPresenter _sofAnswersPresenter = SofAnswersPresenter();
+  final SofAnswersPresenter _sofAnswersPresenter = SofAnswersPresenter();
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +36,7 @@ class AnswersPage extends StatelessWidget {
                 child: ListView.builder(
                   itemCount: answerItems.length,
                   itemBuilder: (context, index) {
-                    return _getListItemUi(answerItems[index]);
+                    return _getListItemUi(answerItems[index], context);
                   },),
               )
             ],
@@ -59,10 +60,9 @@ class AnswersPage extends StatelessWidget {
   }
 
 
-  Widget _getListItemUi(Item answerItem) {
+  Widget _getListItemUi(Item answerItem, BuildContext context) {
     return Column(
       children: <Widget>[
-        Divider(),
         ListTile(
           leading: CircleAvatar(
             backgroundColor: Colors.grey,
@@ -70,11 +70,28 @@ class AnswersPage extends StatelessWidget {
           ),
           title: Text(answerItem.owner.displayName, style: TextStyle(fontWeight: FontWeight.bold)),
           subtitle: Text("reptation: ${answerItem.owner.reputation}"),
+          trailing: FlatButton(
+            child: Text("detail"),
+            onPressed: () {
+              _openWeb(context, answerItem.owner.link);
+            },
+          ),
           onTap: () {
-            // call webview
+            _openWeb(context, answerItem.owner.link);
           },
         ),
+        Divider(),
       ],
+    );
+  }
+
+  void _openWeb(BuildContext context, String url) {
+    Navigator.of(context).push(
+        MaterialPageRoute(
+            builder: (BuildContext context) {
+              return WebPage(url: url);
+            }
+        )
     );
   }
 }
