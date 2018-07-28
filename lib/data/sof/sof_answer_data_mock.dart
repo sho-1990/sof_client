@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:sof_app/data/exception/fetch_data_exception.dart';
+
 import 'sof_answer_data.dart';
 
 class MockSofAnswersRepository implements SofAnswersRepository {
@@ -36,7 +38,11 @@ class MockSofAnswersRepository implements SofAnswersRepository {
 
 
   @override
-  Future<List<Item>> fetchAnswers() {
-    return Future.value(items);
+  Future<List<Item>> fetchAnswers() async {
+    return Future.delayed(const Duration(seconds: 3), () => items);
+  }
+
+  List<Item> errorTest() {
+    throw FetchDataException(message: "test");
   }
 }

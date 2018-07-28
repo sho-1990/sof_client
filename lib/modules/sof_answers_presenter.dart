@@ -3,21 +3,27 @@ import 'dart:async';
 import 'package:sof_app/data/sof/sof_answer_data.dart';
 import 'package:sof_app/dependency_injection.dart';
 
-abstract class AnswerListContract {
-  void onGetAnswersSeed(Future<List<Item>> items);
-}
-
 class SofAnswersPresenter {
-  AnswerListContract _view;
   SofAnswersRepository _sofAnswersRepository;
 
-  SofAnswersPresenter(this._view) {
+  var _itemStreamController = StreamController<List<Item>>();
+
+  get itemStream => _itemStreamController.stream;
+
+
+  SofAnswersPresenter() {
     Injector injector = Injector();
     _sofAnswersRepository = injector.sofAnswersRepository;
   }
 
-  void loadAnswers() {
-    var items = _sofAnswersRepository.fetchAnswers();
-    _view.onGetAnswersSeed(items);
+  Future loadAnswers() async {
+    var items;
+    try {
+      items = await _sofAnswersRepository.fetchAnswers();
+    } catch (e) {
+      _itemStreamController.addError(e);
+      return;
+    }
+    _itemStreamController.add(items);
   }
 }

@@ -8,3 +8,5 @@ final _myTheme = ThemeData(
 );
 
 get myTheme => _myTheme;
+
+get iOSButtonColor => Colors.blueAccent;
