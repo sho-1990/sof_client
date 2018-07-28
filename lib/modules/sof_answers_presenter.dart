@@ -21,6 +21,7 @@ class SofAnswersPresenter {
     try {
       items = await _sofAnswersRepository.fetchAnswers();
     } catch (e) {
+      print(e);
       _itemStreamController.addError(e);
       return;
     }

@@ -46,7 +46,8 @@ class AnswersPage extends StatelessWidget {
   }
 
   Widget _loadErrorWidget(ThemeData themeData) {
-    return Center(
+    return Container(
+      alignment: Alignment.center,
       child: PlatformButton(
         text: "Reload",
         onPressed: () {

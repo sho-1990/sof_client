@@ -25,8 +25,8 @@ class Item {
       score = map['score'],
       lastActivityDate = DateTime.fromMillisecondsSinceEpoch(map['last_activity_date']),
       creationDate = DateTime.fromMillisecondsSinceEpoch(map['creation_date']),
-      answerId = int.parse(map['answer_id']),
-      questionId = int.parse(map['question_id']);
+      answerId = map['answer_id'],
+      questionId = map['question_id'];
 }
 
 class Owner {
@@ -49,7 +49,7 @@ class Owner {
   Owner.fromMap(Map<String, dynamic> map)
     : reputation = map['reputation'],
       userId = map['user_id'],
-      userType = map['user_id'],
+      userType = map['user_type'],
       profileImage = map['profile_image'],
       displayName = map['display_name'],
       link = map['link'];

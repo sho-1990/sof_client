@@ -23,13 +23,13 @@ class PlatformButton extends StatelessWidget {
   Widget _button() {
     if (defaultTargetPlatform == TargetPlatform.iOS) {
       return CupertinoButton(
-        child: Center(child: Text(text),),
+        child: Container(child: Text(text),),
         onPressed: onPressed,
         color: buttonColorOniOS,
       );
     } else {
       return FlatButton(
-        child: Center(child: Text(text),),
+        child: Container(child: Text(text),),
         onPressed: onPressed,
         color: buttonColorOnAndroid,
       );
