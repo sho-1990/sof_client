@@ -41,8 +41,4 @@ class MockSofAnswersRepository implements SofAnswersRepository {
   Future<List<Item>> fetchAnswers() async {
     return Future.delayed(const Duration(seconds: 3), () => items);
   }
-
-  List<Item> errorTest() {
-    throw FetchDataException(message: "test");
-  }
 }
