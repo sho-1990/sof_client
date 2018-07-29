@@ -39,7 +39,7 @@ class _HomePageState extends State<HomePage> {
       case 0:
         return AnswersPage();
       case 1:
-        return Center(child: Text("1"));
+        return Center(child: Text("Comming Soon"));
       default:
         throw ArgumentError("invalid");
     }
