@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sof_app/data/sof/sof_answer_data.dart';
 import 'package:sof_app/modules/sof_answers_presenter.dart';
 import 'package:sof_app/my_theme.dart';
-import 'package:sof_app/ui/platform_button.dart';
+import 'package:sof_app/ui/reload_button.dart';
 import 'package:sof_app/ui/sof_web_page.dart';
 import 'package:sof_app/ui/ui_util.dart' as uiUtil;
 
@@ -49,8 +49,7 @@ class AnswersPage extends StatelessWidget {
   Widget _loadErrorWidget(ThemeData themeData) {
     return Container(
       alignment: Alignment.center,
-      child: PlatformButton(
-        text: "Reload",
+      child: ReloadButton(
         onPressed: () {
           _sofAnswersPresenter.loadAnswers();
         },
@@ -68,7 +67,7 @@ class AnswersPage extends StatelessWidget {
             backgroundColor: Colors.grey,
             child: Image.network(answerItem.owner.profileImage),
           ),
-          title: Text(answerItem.owner.displayName, style: TextStyle(fontWeight: FontWeight.bold)),
+          title: Text(answerItem.owner.displayName, style: TextStyle(fontWeight: FontWeight.bold),),
           subtitle: Text("reptation: ${answerItem.owner.reputation}"),
           trailing: FlatButton(
             child: Text("detail"),

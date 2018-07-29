@@ -2,15 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class PlatformButton extends StatelessWidget {
+class ReloadButton extends StatelessWidget {
 
-  final String text;
+  final String title = "Reload";
   final VoidCallback onPressed;
   final Color buttonColorOnAndroid;
   final Color buttonColorOniOS;
 
-  const PlatformButton({Key key,
-    @required this.text,
+  const ReloadButton({Key key,
     @required this.onPressed,
     @required this.buttonColorOnAndroid,
     @required this.buttonColorOniOS}) : super(key: key);
@@ -23,16 +22,20 @@ class PlatformButton extends StatelessWidget {
   Widget _button() {
     if (defaultTargetPlatform == TargetPlatform.iOS) {
       return CupertinoButton(
-        child: Container(child: Text(text),),
+        child: _createChild(),
         onPressed: onPressed,
         color: buttonColorOniOS,
       );
     } else {
       return FlatButton(
-        child: Container(child: Text(text),),
+        child: _createChild(),
         onPressed: onPressed,
         color: buttonColorOnAndroid,
       );
     }
+  }
+
+  Widget _createChild() {
+    return Container(child: Text(title),);
   }
 }
