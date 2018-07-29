@@ -10,7 +10,7 @@ void main() {
 class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Injector.configure(Flavor.MOCK);
+    Injector.configure(Flavor.PROD);
     return MaterialApp(
       theme: myTheme,
       home: HomePage()
