@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sof_app/ui/answers_page.dart';
+import 'ui_util.dart' as uiUtil;
 
 class HomePage extends StatefulWidget {
   @override
@@ -37,9 +38,19 @@ class _HomePageState extends State<HomePage> {
   Widget _selectingWidget() {
     switch (_currentIndex) {
       case 0:
+        uiUtil.setupPortrait();
         return AnswersPage();
       case 1:
-        return Center(child: Text("Comming Soon"));
+        uiUtil.setupPortraitAndLandscape();
+        return OrientationBuilder(
+            builder: (context, orientation) {
+              if (orientation == Orientation.portrait) {
+                return Center(child: Text("Comming Soon in portrait!"));
+              } else {
+                return Center(child: Text("Comming Soon in landscape!"),);
+              }
+            },
+          );
       default:
         throw ArgumentError("invalid");
     }
