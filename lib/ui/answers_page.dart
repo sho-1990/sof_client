@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sof_app/data/sof/sof_answer_data.dart';
 import 'package:sof_app/modules/sof_answers_presenter.dart';
 import 'package:sof_app/my_theme.dart';
+import 'package:sof_app/ui/navigation_util.dart';
 import 'package:sof_app/ui/reload_button.dart';
 import 'package:sof_app/ui/sof_web_page.dart';
 import 'package:sof_app/ui/ui_util.dart' as uiUtil;
@@ -79,12 +80,6 @@ class AnswersPage extends StatelessWidget {
   }
 
   void _openWeb(BuildContext context, String url) {
-    Navigator.of(context).push(
-        MaterialPageRoute(
-            builder: (BuildContext context) {
-              return WebPage(url: url);
-            }
-        )
-    );
+    openWeb(context, url);
   }
 }

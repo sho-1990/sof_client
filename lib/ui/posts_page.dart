@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sof_app/data/sof/sof_post_data.dart';
 import 'package:sof_app/modules/sof_posts_presenter.dart';
+import 'package:sof_app/ui/navigation_util.dart';
 import 'ui_util.dart' as uiUtil;
 
 class PostsPage extends StatelessWidget {
@@ -53,11 +54,29 @@ class PostsPage extends StatelessWidget {
     return Column(
       children: <Widget>[
         ListTile(
-          title: Text(postItem.link, style: TextStyle(fontWeight: FontWeight.bold),),
+          leading: CircleAvatar(
+            backgroundColor: Colors.grey,
+            child: Image.network(postItem.owner.profileImage),
+          ),
+          title: Text(postItem.postType, style: TextStyle(fontWeight: FontWeight.bold),),
+          subtitle: Text(postItem.link),
+          trailing: FlatButton(
+            child: Text("detail"),
+            onPressed: () {
+              _openWeb(context, postItem.link);
+            },
+          ),
+          onTap: () {
+            _openWeb(context, postItem.link);
+          },
         ),
         Divider(),
       ],
     );
+  }
+
+  void _openWeb(BuildContext context, String url) {
+    openWeb(context, url);
   }
 }
 
