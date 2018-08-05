@@ -8,6 +8,16 @@ get circleIndicator =>
         ? CupertinoActivityIndicator()
         : CircularProgressIndicator();
 
+get bottomNavigationBarItems => <BottomNavigationBarItem>[
+  BottomNavigationBarItem(
+    icon: Icon(Icons.person),
+    title: Text("Answers"),
+  ),
+  BottomNavigationBarItem(
+    icon: Icon(Icons.speaker_notes),
+    title: Text("Post"),
+  ),
+];
 
 
 void setupPortrait() {
