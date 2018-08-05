@@ -6,7 +6,7 @@ import 'package:sof_app/dependency_injection.dart';
 class SofAnswersPresenter {
   SofAnswersRepository _sofAnswersRepository;
 
-  var _itemStreamController = StreamController<List<Item>>();
+  var _itemStreamController = StreamController<List<Answer>>();
 
   get itemStream => _itemStreamController.stream;
 

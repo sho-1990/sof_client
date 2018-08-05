@@ -1,11 +1,13 @@
 import 'dart:async';
 
+import 'package:sof_app/data/sof/data/owner.dart';
+
 import 'sof_answer_data.dart';
 
 class MockSofAnswersRepository implements SofAnswersRepository {
 
-  final items = <Item>[
-    Item(owner: Owner(
+  final items = <Answer>[
+    Answer(owner: Owner(
         reputation: 490,
         userId: 6775560,
         userType: "registered",
@@ -19,7 +21,7 @@ class MockSofAnswersRepository implements SofAnswersRepository {
       answerId: 51501276,
       questionId: 51499807
     ),
-    Item(owner: Owner(
+    Answer(owner: Owner(
         reputation: 490,
         userId: 6775560,
         userType: "registered",
@@ -37,7 +39,7 @@ class MockSofAnswersRepository implements SofAnswersRepository {
 
 
   @override
-  Future<List<Item>> fetchAnswers() async {
+  Future<List<Answer>> fetchAnswers() async {
     return Future.delayed(const Duration(seconds: 3), () => items);
   }
 }

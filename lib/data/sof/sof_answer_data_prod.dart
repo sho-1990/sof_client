@@ -10,7 +10,7 @@ class ProdSofAnswersRepository implements SofAnswersRepository {
   var url = "https://sof-client.herokuapp.com/answers";
 
   @override
-  Future<List<Item>> fetchAnswers() async {
+  Future<List<Answer>> fetchAnswers() async {
     http.Response response = await http.get(url);
     final Map responseBody = json.decode(response.body);
     final statusCode = response.statusCode;
@@ -20,11 +20,11 @@ class ProdSofAnswersRepository implements SofAnswersRepository {
       );
     }
 
-    List<Item> items = List();
+    List<Answer> items = List();
     responseBody.forEach((k, v) {
       if (k == "items") {
         v.forEach((vv) {
-          items.add(Item.fromMap(vv));
+          items.add(Answer.fromMap(vv));
         });
       }
     });

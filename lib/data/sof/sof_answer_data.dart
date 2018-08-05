@@ -1,6 +1,8 @@
 import 'dart:async';
 
-class Item {
+import 'package:sof_app/data/sof/data/owner.dart';
+
+class Answer {
   Owner owner;
   bool isAccepted = false;
   int score = 0;
@@ -9,7 +11,7 @@ class Item {
   int answerId;
   int questionId;
 
-  Item({
+  Answer({
     this.owner,
     this.isAccepted,
     this.score,
@@ -19,7 +21,7 @@ class Item {
     this.questionId
   });
 
-  Item.fromMap(Map<String, dynamic> map)
+  Answer.fromMap(Map<String, dynamic> map)
     : owner = Owner.fromMap(map['owner']),
       isAccepted = map['is_accepted'],
       score = map['score'],
@@ -29,33 +31,8 @@ class Item {
       questionId = map['question_id'];
 }
 
-class Owner {
-  int reputation;
-  int userId;
-  String userType;
-  String profileImage;
-  String displayName;
-  String link;
-
-  Owner({
-    this.reputation,
-    this.userId,
-    this.userType,
-    this.profileImage,
-    this.displayName,
-    this.link
-  });
-
-  Owner.fromMap(Map<String, dynamic> map)
-    : reputation = map['reputation'],
-      userId = map['user_id'],
-      userType = map['user_type'],
-      profileImage = map['profile_image'],
-      displayName = map['display_name'],
-      link = map['link'];
-}
 
 // dartにはinterfaceはなく、classを作成すると暗黙に作られる
 abstract class SofAnswersRepository {
-  Future<List<Item>> fetchAnswers();
+  Future<List<Answer>> fetchAnswers();
 }

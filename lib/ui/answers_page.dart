@@ -28,7 +28,7 @@ class AnswersPage extends StatelessWidget {
               child: uiUtil.circleIndicator
           );
         }
-        List<Item> answerItems = snapshot.data;
+        List<Answer> answerItems = snapshot.data;
         return Container(
           child: Column(
             children: <Widget>[
@@ -47,19 +47,13 @@ class AnswersPage extends StatelessWidget {
   }
 
   Widget _loadErrorWidget(ThemeData themeData) {
-    return Container(
-      alignment: Alignment.center,
-      child: ReloadButton(
-        onPressed: () {
-          _sofAnswersPresenter.loadAnswers();
-        },
-        buttonColorOnAndroid: themeData.accentColor,
-        buttonColorOniOS: iOSButtonColor,),
-    );
+    return uiUtil.errorWidget(themeData, () {
+      _sofAnswersPresenter.loadAnswers();
+    });
   }
 
 
-  Widget _getListItemUi(Item answerItem, BuildContext context) {
+  Widget _getListItemUi(Answer answerItem, BuildContext context) {
     return Column(
       children: <Widget>[
         ListTile(

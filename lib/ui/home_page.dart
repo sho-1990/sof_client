@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sof_app/ui/answers_page.dart';
+import 'package:sof_app/ui/posts_page.dart';
 import 'ui_util.dart' as uiUtil;
 
 class HomePage extends StatefulWidget {
@@ -59,9 +60,7 @@ class _HomePageState extends State<HomePage> {
         return AnswersPage();
       case 1:
         uiUtil.setupPortraitAndLandscape();
-        return Center(
-          child: Text("comming soon"),
-        );
+        return PostsPage();
       default:
         throw ArgumentError("invalid");
     }
